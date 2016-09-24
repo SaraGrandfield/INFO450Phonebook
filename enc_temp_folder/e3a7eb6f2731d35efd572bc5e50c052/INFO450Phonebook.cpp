@@ -1,6 +1,5 @@
-// INFO450Phonebook.cpp : Simple c++ address book program for INFO 450 at VCU, has a menu that allows a user to add a name and phone number
-// also has duplication checking and the ability to print the phonebook to the console
-// Sara A. Grandfield 9/23/16
+// INFO450Phonebook.cpp : Defines the entry point for the console application.
+//
 
 #include "stdafx.h"
 #include <iostream>
@@ -11,10 +10,10 @@ using namespace std;
 void addEntry(char phoneBook[][2][50]);
 bool validateEntry(char phoneBook[][2][50], char text[50]);
 void showBook(char phoneBook[][2][50], int length);
+//void menu();
 
 bool exitP = false;
 bool invalid = true;
-/*Counts how many entrys have been put in so far*/
 int entry;
 string errorM = "Please enter a Valid response \n Example: A \n Now You Try:";
 string menu = "Please Input just the Action you would like to Perform : \n 1. Add Entry \n 2. View Phone Book \n 3. Quit";
@@ -35,7 +34,7 @@ int main()
 		{
 		case 1:
 			cin.ignore(numeric_limits<streamsize>::max(), '\n');
-			if (entry < 10){addEntry(phoneBook); }
+			if (entry < 11){addEntry(phoneBook); }
 			else { cout << "Your book is full" << endl; }
 			break;
 		case 2:
@@ -56,7 +55,6 @@ int main()
 	return 0;
 }
 
-//adds and entry to the phone book array, calls the validation method
 void addEntry(char phoneBook[][2][50])
 {
 	char name[50];
@@ -77,15 +75,12 @@ void addEntry(char phoneBook[][2][50])
 	}
 }
 
-//Checks to be sure an entry hasn't already been made for a specific person
 bool validateEntry(char phoneBook[][2][50],char text[50])
 {
 	bool valid = true;
 	int x = 0;
-	//do while loop that iterates through the array to check each location until it finds a match
 	do 
 	{
-	//Checks if text entered by user and passed to function is the same as a specific entry in the array
 		if (strcmp(phoneBook[x][0], text))
 		{
 			valid = true;
@@ -100,7 +95,6 @@ bool validateEntry(char phoneBook[][2][50],char text[50])
 	return valid;
 }
 
-//Displays the contents of the phone book array
 void showBook(char phoneBook[][2][50], int length)
 {
 	
@@ -110,11 +104,19 @@ void showBook(char phoneBook[][2][50], int length)
 		cout << "\t" << x+1 << ". ";
 		for (int y = 0; y < 2; y++)
 		{
-			//Displays a specific entry
 			cout << phoneBook[x][y] << "\t";
+
 		}
 		cout << endl;
 
 		
 	}
 }
+
+/*void menu()
+{
+	cout << "Please Input just the Number of the Action you would like to Perform:" << endl;
+	cout << "1. Add Entry" << endl << "2. View Phone Book" << endl << "3. Quit" << endl;
+
+}*/
+
