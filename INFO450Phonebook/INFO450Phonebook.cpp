@@ -24,7 +24,8 @@ int main()
 {
 	entry = 0;
 	char phoneBook[10][2][50] = { {}, {} ,{} };
-	
+
+	//Main menu powered by cases and a while loop, DOES NOT perfectly catch errors breaks if user types a char or string instead of a number
 	int choice;
 	while (invalid != false) 
 	{
